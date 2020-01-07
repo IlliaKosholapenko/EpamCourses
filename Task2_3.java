@@ -3,7 +3,7 @@ public class Task2_3 {
         int money_Amount = 10000;
         int months = 6 ;
         int percentage_Per_Year = 12 ;
-        float money_Res = money_Amount*(percentage_Per_Year*0.01f);
+        float money_Res = money_Amount*((percentage_Per_Year*0.01f)/12);
         System.out.println("Сумма прибыли : " + money_Res*months);
     }
 }
