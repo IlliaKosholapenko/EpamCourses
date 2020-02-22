@@ -12,8 +12,12 @@ public class Task6_Books {
         books = new Task6_Book[books_amount];
     }
 
-    public void addBook(int id, int year, int pages_amount, int price, String name, String editor, String author) {
-        Task6_Book book = new Task6_Book(id, year, pages_amount, price, name, editor, author);
+    public Task6_Book[] getBooks() {
+        return books;
+    }
+
+    public void addBook(Task6_Book book) {
+
         for(int i = 0; i < books.length ; i++) {
             if(books[i] == null){
                 books[i] = book;
@@ -29,14 +33,14 @@ public class Task6_Books {
         public void showBooks(){
         for (Task6_Book elem: books) {
             if (elem != null) {
-                elem.view();
+                System.out.println(elem.toString());
             } else {
                 break;
             }
         }
     }
 
-    public void changePrice(int percent){
+    public void changePrice(float percent){
         float fractional_percent = percent * 0.01f;
 
         for (Task6_Book elem : books){
@@ -56,7 +60,7 @@ public class Task6_Books {
         for (Task6_Book elem: books){
             if (elem != null){
                 String cur_author = elem.getAuthor();
-                if(cur_author == author){
+                if(cur_author.equals(author)){
                     author_books.books[i] = elem;
                     i++;
                 }
@@ -80,8 +84,6 @@ public class Task6_Books {
                     year_books.books[i] = elem;
                     i++;
                 }
-            } else {
-                continue;
             }
         }
         if (year_books.books[0] == null){
@@ -89,5 +91,30 @@ public class Task6_Books {
         }
         return year_books;
     }
+
+    public void sortByAuthor(){
+        Task6_Book [] copyArr =  Arrays.copyOf(this.getBooks(), this.getBooks().length);
+        Arrays.sort( copyArr , new AuthorComparator());
+        for (Task6_Book elem : copyArr){
+            System.out.println(elem);
+        }
+    }
+
+    public void sortByEditor(){
+        Task6_Book [] copyArr =  Arrays.copyOf(this.getBooks(), this.getBooks().length);
+        Arrays.sort( copyArr , new EditorCompator());
+        for (Task6_Book elem : copyArr){
+            System.out.println(elem);
+        }
+    }
+
+    public void sortByPrice(){
+        Task6_Book [] copyArr =  Arrays.copyOf(this.getBooks(), this.getBooks().length);
+        Arrays.sort( copyArr , new PriceComparator());
+        for (Task6_Book elem : copyArr){
+            System.out.println(elem);
+        }
+    }
+
 
 }

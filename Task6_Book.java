@@ -18,10 +18,19 @@ public class Task6_Book {
     }
 
 
-    public void view(){
-        System.out.println("id " + id + " name " + name + " author " + author +
-                " editor " + editor + " price " + price + " pages " + pages_amount + " year " + year );
+    @Override
+    public String toString() {
+        return "Book : " +
+                "id = " + id +
+                ", year = " + year +
+                ", pages_amount = " + pages_amount +
+                ", name = " + name +
+                ", editor = " + editor +
+                ", author = " + author +
+                ", price = " + price;
     }
+
+
 
 
 
@@ -45,5 +54,7 @@ public class Task6_Book {
         return author;
     }
 
-
+    public String getEditor() {
+        return editor;
+    }
 }
